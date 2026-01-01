@@ -1,0 +1,39 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-faeebf5703abdb87ade5aee1c960dc16dcdde635",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "userSourceNameMap": {
+    "contracts/Counter.sol": "project/contracts/Counter.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode",
+            "evm.deployedBytecode",
+            "evm.methodIdentifiers",
+            "metadata"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/Counter.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\r\npragma solidity ^0.8.28;\r\n\r\ncontract Counter {\r\n  uint public x;\r\n\r\n  event Increment(uint by);\r\n\r\n  function inc() public {\r\n    x += 1; // 🐞 bug!\r\n    emit Increment(1);\r\n  }\r\n\r\n  function incBy(uint by) public {\r\n    require(by > 0, \"incBy: increment should be positive\");\r\n    x += by;\r\n    emit Increment(by);\r\n  }\r\n}\r\n\r\n// Random number to make this contract file unique: 961072473"
+      }
+    }
+  }
+}
